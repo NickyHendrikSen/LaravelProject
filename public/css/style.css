@@ -1,0 +1,666 @@
+body{
+	margin:0;
+	padding: 0;
+	background-color: #fafafa;
+	font-size: 16px;
+	font-family: "Helvetica";
+	width: 100%;
+	height: 100%;
+}
+html{
+	margin:0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+	display: block;
+}
+.nav{
+	width: 100%;
+	position: fixed;
+	height: 100px;
+	background-color: white;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
+	z-index: 99;
+}
+.logo{
+	float: left;
+	margin-left: 100px;
+	user-select: none;
+}
+.logoimage{
+	height: 100px;
+	float: left;
+}
+.menus{
+	font-size: 16px;
+	height: 100px;
+	margin-right: 100px;
+	float: right;
+}
+.menu{
+	float: left;
+	margin-left: 40px;
+	line-height: 100px;
+	cursor: pointer;
+	transition: 0.1s ease;
+}
+.menu:hover{
+	opacity: 0.7;
+	transition: 0.1s ease;
+}
+.flexcenter{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.container{
+	background-color: white;
+	padding: 10px 30px 30px 30px;
+	border-radius: 5px;
+	border: 1px solid lightgrey;
+	width: 500px;
+	font-size: 15px;
+}
+.logintitle{
+	height: 50px;
+	line-height: 50px;
+	width: 100%;
+	border-bottom: 1px solid grey;
+	margin-bottom: 30px;
+}
+.loginbody{
+	background-image: url("../images/wallpaper.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.loginhint{
+	width: calc(35% - 20px);
+	padding-right: 20px;
+	height: 50px;
+	line-height: 50px;
+	text-align: right;
+	float: left;
+}
+.logininput{
+	width: calc(65% - 70px);
+	background-color: none;
+	border: none;
+	outline: none;
+	height: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	line-height: 30px;
+	font-family: inherit;
+	font-size: inherit;
+	float: left;
+	border: 1px solid lightgrey;
+	border-radius: 3px;
+	padding-left: 10px;
+}
+.loginremember{
+	float: left;
+	width: calc(65% - 70px);
+	margin-top: 10px;
+	font-size: 14px;
+	height: 40px;
+}
+.loginbutton{
+	margin-top: 10px;
+	float: left;
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	background-color: black;
+	color: white;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+.loginbutton:hover{
+	transform: scale(0.97);
+}
+.leftnav{
+	position: fixed;
+	left: 0;
+	top: 100px;
+	z-index: 98;
+	height: calc(100% - 150px);
+	padding-top: 50px;
+	width: calc(25% - 50px);
+	padding-left: 50px;
+	background-color: #1a1a1a;
+	color: white;
+}
+.leftmenu, .selected{
+	padding: 5px 0px;
+	cursor: pointer;
+	transition: 0.2s ease;
+}
+.leftmenu:hover{
+	padding-left: 30px;
+	transition: 0.2s ease;
+}
+.active{
+	background-color: white;
+	color: black;
+}
+.inner{
+	padding: 10px;
+}
+.searchbar{
+	float: left;
+	height: 100px;
+	margin-left: 100px;
+}
+.searchicon{
+	height: 30px;
+	padding: 10px;
+	float: left;
+	margin-top: 25px;
+	user-select: none;
+}
+.searchinput{
+	height: 50px;
+	line-height: 50px;
+	margin-top: 25px;
+	border: none;
+	border-bottom: 1px solid black;
+	float: left;
+	width: 500px;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family: inherit;
+	font-weight: 100;
+	color: black;
+	outline: none;
+}
+.searchinput::placeholder{
+	color: black;
+	font-weight: 100;
+}
+.content{
+	float: left;
+	margin-top: 100px;
+	margin-left: 25%;
+	width: 75%;
+	height: calc(100% - 100px);
+	position: relative;
+}
+.viewallshoetitle{
+	float: left;
+	width: calc(100% - 100px);
+	margin-top: 30px;
+	height: 50px;
+	line-height: 50px;
+	margin-left: 50px;
+	font-weight: 800;
+	font-size: 30px;
+
+}
+.shoes{
+	float: left;
+	width: calc(100% - 80px);
+	margin-left: 40px;
+	margin-top: 30px;
+	padding-bottom: 50px;
+}
+.shoe{
+	width: calc(100% / 3 - 20px);
+	margin: 0px 10px 50px 10px;
+	float: left;
+}
+.shoeimage{
+	width: 100%;
+}
+.shoename{
+	font-weight: 800;
+	line-height: 30px;
+	height: 30px;
+}
+.shoepicture{
+	height: 100%;
+	width: calc(100vh - 100px);
+	object-fit: cover; 
+}
+.shoedetail{
+	float: right;
+	width: calc(100% - (100vh - 100px));
+	height: 100%;
+	position: relative;
+
+}
+.shoenamedetail{
+	float: left;
+	width: calc(100% - 100px);
+	color: black;
+	font-size: 50px;
+	font-weight: 800;
+	margin-left: 50px;
+	margin-top: 50px;
+}
+.shoepricedetail{
+	float: right;
+	margin-top: 50px;
+	font-size: 20px;
+	font-weight: 300;
+}
+.description{
+	float: left;
+	margin-top: 30px;
+	width: calc(100% - 100px);
+	padding-left: 50px;
+	padding-right: 50px;
+}
+.bottomright{
+	width: calc(100% - 100px);
+	padding-right: 50px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin-bottom: 30px;
+}
+.addtocart{
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	background-color: black;
+	color: white;
+	text-align: center;
+	margin-top: 20px;
+	font-size: 15px;
+	cursor: pointer;
+}
+.disabled{
+	background-color: lightgrey;
+	cursor: not-allowed;
+}
+.noicon{
+	height: 20px;
+	margin-top: 10px;
+	float: left;
+	margin-left: 20px;
+}
+.addcartoverlay{
+	position: absolute;
+	z-index: 97;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.3);
+	left: 0;
+	top: 0;
+}
+.flexbox{
+	width: 100%;
+	float: left;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.addcartcontainer{
+	width: 50%;
+	padding: 30px;
+	border-radius: 5px;
+	background-color: white;
+}
+.addtocarttitle{
+	width: 100%;
+	float: left;
+	padding-bottom: 20px;
+	border-bottom: 1px solid black;
+	margin-bottom: 20px;
+}
+.addtocartimage{
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+	float: left;
+}
+.addtocartdetail{
+	float: left;
+	margin-left: 20px;
+}
+.addtocartshoename{
+	font-weight: 800;
+	margin-bottom: 10px;
+}
+.addtocartprice{
+	margin-bottom: 10px;
+}
+.button{
+	height: 40px;
+	width: 100px;
+	background-color: black;
+	color: white;
+	font-family: inherit;
+	font-size: 15px;
+	line-height: 40px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	margin-top: 20px;
+	text-align: center;
+	transition: 0.1s ease;
+	user-select: none;
+}
+.button:hover{
+	transform: scale(0.98);
+	opacity: 0.7;
+	transition: 0.1s ease;
+}
+.carts{
+	width: calc(100% - 100px);
+	margin-left: 50px;
+	margin-top: 30px;
+	float: left;
+}
+.cart{
+	width: calc(100% - 40px);
+	float: left;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+.cartimage{
+	width: 150px;
+	float: left;
+}
+.cartdetail{
+	float: left;
+	margin-left: 20px;
+}
+.cartname{
+	font-weight: 800;
+}
+.cartprice{
+
+	margin-bottom: 30px;
+}
+.cartqty{
+	margin-bottom: 20px;
+}
+.checkoutbutton{
+	float: right;
+	width: 200px;
+	font-weight: 800;
+	margin-bottom: 30px;
+}
+.totalprice{
+	float: right;
+	font-size: 40px;
+	font-weight: 300;
+}
+.cartedit{
+	margin-top: 20px;
+}
+.editcartimage{
+	float: left;
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
+	margin-right: 20px;
+}
+.editcartcontent{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.editcartcontainer{
+	float: left;
+	width: calc(100% - 160px);
+	padding: 30px;
+	background-color: white;
+	margin-bottom: 70px;
+}
+.editcartname{
+	font-weight: 800;
+}
+.editcartprice{
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+.pagination{
+	float: right;
+	margin-top: 10px;
+}
+.paginatebutton{
+	width: 30px;
+	height: 30px;
+	background: url("../images/arrow.png");
+	background-size: contain;
+	float: left;
+	margin-left: 50px;
+}
+.editsubmit{
+	margin-top: 15px;
+}
+.editcarttitle{
+	width: calc(100% - 100px);
+	font-size: 40px;
+	font-weight: 800;
+	margin-bottom: 20px;
+}
+.left{
+	transform: rotate(180deg);
+}
+.editcartbackground{
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: blur(10px);
+
+}
+.deletebutton{
+	height: 20px;
+	padding: 10px;
+	border: 1px solid black;
+	opacity: 0.5;
+	margin-top: 15px;
+	float: right;
+	cursor: pointer;
+	transition: 0.1s ease;
+}
+.deletebutton:hover{
+	opacity: 1;
+	transition: 0.1s ease;
+}
+.transactions{
+	width: calc(100% - 100px);
+	margin-left: 50px;
+}
+.transaction{
+	width: calc(100% - 40px);
+	padding: 20px;
+	float: left;
+	background-color: white;
+	margin-bottom: 20px;
+}
+.transactionheader{
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	float: left;
+}
+.transactiontime{
+	font-weight: 800;
+	float: left;
+}
+.transactionprice{
+	float: right;
+	font-size: 30px;
+	font-weight: 300;
+}
+.transactionimages{
+	width: 100%;
+	float: left;
+}
+.transactionimage{
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	float: left;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+.addshoecontainer{
+	float: left;
+	width: calc(100% - 50px);
+	margin-left: 50px;
+	margin-top: 20px;
+
+}
+.addshoeimagecontainer{
+	width: 300px;
+	height: 300px;
+	overflow:none;
+	border: 1px solid grey;
+	position: relative;
+}
+.addshoeimageinput{
+	display: none;
+}
+.addshoedisplay{
+	width: 300px;
+	height: 300px;
+	object-fit: cover;
+	display: none;
+}
+.addshoeimagelabel{
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	left: 0;
+	top: 0;
+	line-height: 300px;
+	text-align: center;
+	cursor: pointer;
+	background: rgba(255,255,255,0.5);
+}
+.addshoeimagelabel:hover{
+	opacity: 0.5;
+}
+.addshoeinput{
+	margin-top:  30px;
+	width: calc(50% - 64px);
+	padding-left: 10px;
+	margin-right: 50px;
+	height: 40px;
+	line-height: 40px;
+	font-family: inherit;
+	border: none;
+	outline: none;
+	border: 1px solid grey;
+	font-size: 18px;
+	font-weight: 300;
+	float: left;
+	background: transparent;
+}
+.addshoeinputdouble{
+	margin-top: 20px;
+	width: calc(100% - 64px);
+	padding-left: 10px;
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	font-family: inherit;
+	border: none;
+	outline: none;
+	border: 1px solid grey;
+	font-size: 18px;
+	font-weight: 300;
+	float: left;
+	background: transparent;
+}
+.addshoebutton{
+	float: right;
+	margin-top: 40px;
+	margin-right: 52px;
+	width: 150px;
+}
+.updateshoedisplay{
+	width: 300px;
+	height: 300px;
+	object-fit: cover;
+}
+.updateshoeimagecontainer{
+	width: 300px;
+	height: 300px;
+	overflow:none;
+	border: 1px solid grey;
+	position: relative;
+	float: left;
+	margin-right: 30px;
+}
+.updateshoedetail{
+	float: left;
+	width: calc(100% - 382px);
+	height: 332px;
+}
+.updateshoename{
+	font-weight: 800;
+	font-size: 30px;
+}
+.updateshoeprice{
+	margin-bottom: 30px;
+}
+.profile{
+	height: 40px;
+	margin-top: 30px;
+	line-height: 40px;
+	float: right;
+	margin-right: 50px;
+	cursor: pointer;
+}
+.profilename{
+	width: 100px;
+	text-align: center;
+	padding: 0px 20px;
+}
+.dropdowns{
+	background: black;
+	display: none;
+}
+.dropdown{
+	color: white;
+	width: 100px;
+	text-align: center;
+	padding: 0px 20px;
+}
+.profile:hover .dropdowns{
+	display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
