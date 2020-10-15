@@ -43,4 +43,5 @@ Route::group(['middleware' => ['authenticate']], function() {
     Route::get('/home', 'HomeController@index');
     Route::get('/insertShoe', 'PageController@insertShoe');
     Route::get('/shoeDetail/{id}', 'ShoeController@shoeDetail');
+    Route::get('/shoeDelete/{id}', 'ShoeController@delete');
 });

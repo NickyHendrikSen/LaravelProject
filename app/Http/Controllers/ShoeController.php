@@ -43,4 +43,11 @@ class ShoeController extends Controller
         return view('shoeDetail', ["shoe", $shoe]);
     }
 
+    function delete(Request $request){
+        $id = $request->id;
+        Storage::delete($filename);
+        Item::where('id', $id)->delete();
+        return redirect()->back();
+    }
+
 }
