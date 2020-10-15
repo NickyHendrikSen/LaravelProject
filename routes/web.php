@@ -37,10 +37,11 @@ Route::group(['middleware' => ['guest']], function() {
     Route::get('/register', 'PageController@register');
 });
 
+Route::get('/home', 'HomeController@index');
+
 //If not authenticated, then go back to login
 Route::group(['middleware' => ['authenticate']], function() {
     Route::get('/', 'HomeController@index');
-    Route::get('/home', 'HomeController@index');
     Route::get('/insertShoe', 'PageController@insertShoe');
     Route::get('/shoeDetail/{id}', 'ShoeController@shoeDetail');
     Route::get('/shoeDelete/{id}', 'ShoeController@delete');

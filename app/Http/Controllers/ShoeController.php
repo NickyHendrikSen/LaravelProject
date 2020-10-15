@@ -39,7 +39,7 @@ class ShoeController extends Controller
     function shoeDetail(Request $request){
         $id = $request->id;
         $shoe = Shoe::where('id', '=', $id)->get();
-        dd($shoe);
+        // dd($shoe);
         return view('shoeDetail', ["shoe", $shoe]);
     }
 
