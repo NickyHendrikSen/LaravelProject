@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Validator;
+use App\User;
 
 class UserController extends Controller
 {
@@ -21,7 +23,7 @@ class UserController extends Controller
     }
 
     function register(Request $request){
-        $validatedData = $request->validate([
+        $validatedData = Validator::make($request->all(), [
             'username' => ['required'],
             'email' => ['required', 'unique:users','email'],
             'password' => ['required', 'min:3'],
@@ -33,12 +35,13 @@ class UserController extends Controller
             return redirect()->back()->withErrors($validatedData->errors());
         }
 
-        User::create(array(
+        $a = User::create(array(
             "username" => $request["username"],
             "email" => $request["email"],
             "password" => bcrypt($request["password"]),
             "role" => "User",
         ));
+        // dd($a);
         return redirect('home');
     }
 

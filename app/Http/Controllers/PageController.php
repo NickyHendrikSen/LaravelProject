@@ -4,22 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Shoe;
 
 class PageController extends Controller
 {
     function login(){
-
-        if(Auth::check()){
-            return redirect('home');
-        }
         return view('login');
     }
 
     function register(){
-
-        if(Auth::check()){
-            return redirect('home');
-        }
         return view('register');
+    }
+
+    function insertShoe(){
+        return view('insertShoe');
     }
 }

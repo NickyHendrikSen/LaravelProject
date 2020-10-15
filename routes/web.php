@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 // Route::get('/Login', function () {
 //     return view('login');
 // });
@@ -22,11 +22,25 @@ Route::get('/', function () {
 // });
 
 // Auth::routes();
+//APIs
 Route::post('/loginUser', 'UserController@login');
 Route::post('/registerUser', 'UserController@register');
 Route::post('/logoutUser', 'UserController@logout');
+Route::post('/insertShoe', 'ShoeController@insertShoe');
 
-Route::get('/login', 'PageController@login');
-Route::get('/register', 'PageController@register');
 
-Route::get('/home', 'HomeController@index');
+//Page
+
+//If authenticated, go to home right away
+Route::group(['middleware' => ['guest']], function() {
+    Route::get('/login', 'PageController@login');
+    Route::get('/register', 'PageController@register');
+});
+
+//If not authenticated, then go back to login
+Route::group(['middleware' => ['authenticate']], function() {
+    Route::get('/', 'HomeController@index');
+    Route::get('/home', 'HomeController@index');
+    Route::get('/insertShoe', 'PageController@insertShoe');
+    Route::get('/shoeDetail/{id}', 'ShoeController@shoeDetail');
+});
