@@ -36,7 +36,11 @@
                 <img src="images/search.png" class="searchicon">
                 <input type="text" placeholder="search" class="searchinput">
             </div>
-            <!-- Disini Drop down logout (action="/logout" method="post") dapatin nama user loginnya pakai "{{ Auth::user()->name }}" -->
+            <form action="/logoutUser" method="POST">
+                @csrf
+                <input type="submit" value="Logout" class="menu">
+            </form>
+            <!-- Disini Drop down logout (action="/logoutUser" method="post") dapatin nama user loginnya pakai "{{ Auth::user()->name }}" -->
         @endguest
     </nav>
     @yield('content')   

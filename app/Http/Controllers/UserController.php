@@ -10,12 +10,13 @@ class UserController extends Controller
     
     function login(Request $request){
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
+        $remember = $request->remember == null ? false : true;
+        if (Auth::attempt($credentials, $remember)) {
             // Authentication passed...
             return redirect('home');
         }
         else{
-            return redirect('login')->with('error', 'Email or Password is wrong!');;
+            return redirect('login')->with('error', 'Email or Password is wrong!');
         }
     }
 
@@ -38,5 +39,10 @@ class UserController extends Controller
             "password" => bcrypt($request["password"])
         ));
         return redirect('home');
+    }
+
+    function logout(){
+        Auth::logout();
+        return redirect('login')->with('error', 'Logged out!');
     }
 }

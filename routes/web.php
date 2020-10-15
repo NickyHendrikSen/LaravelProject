@@ -24,6 +24,7 @@ Route::get('/', function () {
 // Auth::routes();
 Route::post('/loginUser', 'UserController@login');
 Route::post('/registerUser', 'UserController@register');
+Route::post('/logoutUser', 'UserController@logout');
 
 Route::get('/login', 'PageController@login');
 Route::get('/register', 'PageController@register');
