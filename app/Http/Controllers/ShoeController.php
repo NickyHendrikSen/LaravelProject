@@ -53,6 +53,10 @@ class ShoeController extends Controller
         return redirect()->back();
     }
 
+    function update(Request $request){
+        return redirect()->back();
+    }
+
     function add(){
         return view("addshoe");
     }
