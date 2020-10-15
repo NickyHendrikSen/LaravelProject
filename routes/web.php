@@ -25,7 +25,8 @@
 //APIs
 Route::post('/loginUser', 'UserController@login');
 Route::post('/registerUser', 'UserController@register');
-Route::post('/logoutUser', 'UserController@logout');
+Route::get('/logoutUser', 'UserController@logout');
+Route::get('/shoe/{id}', 'ShoeController@detail');
 Route::post('/insertShoe', 'ShoeController@insertShoe');
 
 
@@ -42,7 +43,15 @@ Route::get('/home', 'HomeController@index');
 //If not authenticated, then go back to login
 Route::group(['middleware' => ['authenticate']], function() {
     Route::get('/', 'HomeController@index');
+    Route::get('/cart', 'CartController@show');
+    Route::get('/history', 'TransactionController@history');
     Route::get('/insertShoe', 'PageController@insertShoe');
-    Route::get('/shoeDetail/{id}', 'ShoeController@shoeDetail');
+    Route::get('/shoe/cart/{id}', 'ShoeController@cart');
     Route::get('/shoeDelete/{id}', 'ShoeController@delete');
+    Route::get('/cart/update/{id}', 'CartController@update');
+});
+Route::group(['middleware' => ['authadmin']], function() {
+    Route::get('/addshoe', 'ShoeController@add');
+    Route::get('/alltransaction', 'TransactionController@all');
+    Route::get('/shoe/update/{id}', 'ShoeController@updateform');
 });

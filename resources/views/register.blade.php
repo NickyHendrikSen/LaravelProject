@@ -1,6 +1,8 @@
 @extends('layouts.app')
-
-@section('content')
+@section("title","Sign Up | JUST DU IT")
+@section('body')
+<body class="loginbody">
+	@include("parts.loginnav")
 <div class="flexcenter">
 	<form class="container" action="/registerUser" method="post">
 		@csrf
@@ -46,4 +48,5 @@
 
 	</form>
 </div>
+</body>
 @endsection

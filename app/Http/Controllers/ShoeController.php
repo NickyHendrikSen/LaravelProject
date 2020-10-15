@@ -36,11 +36,14 @@ class ShoeController extends Controller
         return redirect('home');
     }
 
-    function shoeDetail(Request $request){
+    function detail(Request $request){
         $id = $request->id;
         $shoe = Shoe::where('id', '=', $id)->get();
         // dd($shoe);
         return view('shoeDetail', ["shoe", $shoe]);
+    }
+    function cart($id){
+        return view("cart");
     }
 
     function delete(Request $request){
@@ -48,6 +51,14 @@ class ShoeController extends Controller
         Storage::delete($filename);
         Item::where('id', $id)->delete();
         return redirect()->back();
+    }
+
+    function add(){
+        return view("addshoe");
+    }
+
+    function updateform($id){
+        return view("updateshoe");
     }
 
 }

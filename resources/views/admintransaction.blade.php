@@ -1,28 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Transaction | JUST DU IT</title>
-	<link rel="stylesheet" href="css/style.css">
-</head>
+@extends("layouts.app")
+@section("title","View Transactions | JUST DU IT")
+@section("body")
 <body>
-<nav class="nav">
-	<div class="logo">
-		<img src="images/logo.png" class="logoimage">
-	</div>
-	<div class="searchbar">
-		<img src="images/search.png" class="searchicon">
-		<input type="text" placeholder="search" class="searchinput">
-	</div>
-	<div class="menus">
-		<a href="login.html" class="menu">Login</a>
-		<a href="register.html" class="menu">Register</a>
-	</div>
-</nav>
-<div class="leftnav">
-	<div class="leftmenu"><div class="inner"><a href="home.html">All Shoes</a></div></div>
-	<div class="leftmenu"><div class="inner"><a href="mycart.html">My Cart</a></div></div>
-	<div class="selected"><div class="inner active"><a href="transaction.html">Transactions</a></div></div>
-</div>
+	@include("parts.nav")
+	@include("parts.leftnav")
+
 <div class="content">
 	<div class="viewallshoetitle">Transactions</div>
 	<div class="transactions">
@@ -52,4 +34,4 @@
 	</div>
 </div>
 </body>
-</html>
+@endsection

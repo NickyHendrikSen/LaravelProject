@@ -1,30 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Add Shoe | JUST DU IT</title>
-	<link rel="stylesheet" href="css/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-</head>
+@extends("layouts.app")
+@section("title","Add Shoe | JUST DU IT")
+@section("body")
 <body>
-<nav class="nav">
-	<div class="logo">
-		<img src="images/logo.png" class="logoimage">
-	</div>
-	<div class="searchbar">
-		<img src="images/search.png" class="searchicon">
-		<input type="text" placeholder="search" class="searchinput">
-	</div>
-	<div class="menus">
-		<a href="login.html" class="menu">Login</a>
-		<a href="register.html" class="menu">Register</a>
-	</div>
-</nav>
-<div class="leftnav">
-	<div class="leftmenu"><div class="inner"><a href="adminhome.html">All Shoes</a></div></div>
-	<div class="selected"><div class="inner active"><a href="addshoe.html">Add Shoe</a></div></div>
-	<div class="leftmenu"><div class="inner"><a href="admintransaction.html">View Transactions</a></div></div>
-</div>
+	@include("parts.nav")
+	@include("parts.leftnav")
 <div class="content">
 	<div class="viewallshoetitle">Add Shoe</div>
 	<form method="post" class="addshoecontainer" autocomplete="off">
@@ -63,4 +42,4 @@
 		});
 	});
 </script>
-</html>
+@endsection
