@@ -36,7 +36,8 @@ class UserController extends Controller
         User::create(array(
             "username" => $request["username"],
             "email" => $request["email"],
-            "password" => bcrypt($request["password"])
+            "password" => bcrypt($request["password"]),
+            "role" => "User",
         ));
         return redirect('home');
     }
