@@ -1,34 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Register | JUST DU IT</title>
-	<link rel="stylesheet" href="css/style.css">
-</head>
-<body class="loginbody">
-<nav class="nav">
-	<div class="logo">
-		<img src="images/logo.png" class="logoimage">
-	</div>
-	<div class="menus">
-		<a href="login.html" class="menu">Login</a>
-		<a href="register.html" class="menu">Register</a>
-	</div>
-</nav>
+@extends('layouts.app')
+
+@section('content')
 <div class="flexcenter">
-	<form class="container" action="#" method="post">
+	<form class="container" action="/registerUser" method="post">
+		@csrf
 		<div class="logintitle">Register</div>
 		<div class="loginhint">Username</div>
-		<input type="text" class="logininput" name="username">
+		<input type="text" class="logininput" name="username" value="{{ old('username') }}">
+		<div>
+			@error('username')
+				<span class="invalid-feedback" role="alert">
+					<strong>{{ $message }}</strong>
+				</span>
+			@enderror
+		</div>
 		<div class="loginhint">Email</div>
-		<input type="email" class="logininput" name="email">
+		<input type="email" class="logininput" name="email" value="{{ old('email') }}">
+		<div>
+			@error('email')
+				<span class="invalid-feedback" role="alert">
+					<strong>{{ $message }}</strong>
+				</span>
+			@enderror
+		</div>
 		<div class="loginhint">Password</div>
 		<input type="password" class="logininput" name="password">
+		<div>
+			@error('password')
+				<span class="invalid-feedback" role="alert">
+					<strong>{{ $message }}</strong>
+				</span>
+			@enderror
+		</div>
 		<div class="loginhint">Confirm Password</div>
 		<input type="password" class="logininput" name="confirm_password">
+		<div>
+			@error('confirm_password')
+				<span class="invalid-feedback" role="alert">
+					<strong>{{ $message }}</strong>
+				</span>
+			@enderror
+		</div>
 		<div class="loginhint"></div>
-		<input type="submit" value="Login" class="loginbutton">
+		<input type="submit" value="Register" class="loginbutton">
 
 	</form>
 </div>
-</body>
-</html>
+@endsection

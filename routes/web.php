@@ -14,9 +14,18 @@
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/Login', function () {
-    return view('login');
-});
-Route::get('/Register', function () {
-    return view('register');
-});
+// Route::get('/Login', function () {
+//     return view('login');
+// });
+// Route::get('/Register', function () {
+//     return view('register');
+// });
+
+// Auth::routes();
+Route::post('/loginUser', 'UserController@login');
+Route::post('/registerUser', 'UserController@register');
+
+Route::get('/login', 'PageController@login');
+Route::get('/register', 'PageController@register');
+
+Route::get('/home', 'HomeController@index');
