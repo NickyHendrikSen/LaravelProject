@@ -5,12 +5,12 @@
 @include("parts.nav")
 @include("parts.leftnav")
 <div class="content">
-	<img src="{{ url('/images/eqt.jpg') }}" class="shoepicture">
+	<img src="{{ asset('storage/' . $shoe->image) }}" class="shoepicture">
 	<div class="shoedetail">
-		<div class="shoenamedetail">Adidas EQT Support</div>
-		<div class="description">This is a shoe. You will get a pair of shoe if you buy this. Sole is made of rubber with a power to jump over the everest</div>
+		<div class="shoenamedetail">{{$shoe->name}}</div>
+		<div class="description">{{$shoe->description}}</div>
 		<div class="bottomright">
-			<div class="shoepricedetail">Rp. 2,000,000</div>
+			<div class="shoepricedetail">Rp. {{$shoe->price}}</div>
 			@guest
 				<div class="addtocart disabled"><img class="noicon" src="{{ url('/images/no.png') }}">ADD TO CART</div>
 			@else

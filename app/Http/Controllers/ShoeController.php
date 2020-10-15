@@ -5,32 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Image;
 use App\Shoe;
+use Validator;
 
 class ShoeController extends Controller
 {
     function insertShoe(Request $request){
-        $validatedData = $request->validate([
+        
+        $validatedData = Validator::make($request->all(), [
             'name' => ['required'],
             'description' => ['required'],
-            'price' => ['required', 'min:100'],
-            'image' => ['required', 'image|mimes:jpeg,png,jpg,gif,svg'],
+            'price' => ['required', 'numeric', 'min:100'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
-
+        // dd("test");
         
         $uploadedFile = $request->image;
         $filename = $uploadedFile->store('images');
-
+        $onlyname = $uploadedFile->hashName();
         if ($validatedData->fails())
         {
             return redirect()->back()->withErrors($validatedData->errors());
         }
 
-        Image::make($file)->save();
+        // Image::make($file)->save();
         Shoe::create(array(
             "name" => $request["name"],
             "description" => $request["description"],
             "price" => $request["price"],
-            "image" => storage_path('app/images/' . $filename),
+            "image" => 'images/' . $onlyname,
         ));
 
         return redirect('home');
@@ -38,9 +40,9 @@ class ShoeController extends Controller
 
     function detail(Request $request){
         $id = $request->id;
-        $shoe = Shoe::where('id', '=', $id)->get();
+        $shoe = Shoe::where('id', '=', $id)->first();
         // dd($shoe);
-        return view('shoeDetail', ["shoe", $shoe]);
+        return view('shoeDetail')->with("shoe", $shoe);
     }
     function cart($id){
         return view("cart");
