@@ -17,7 +17,9 @@ class TransactionController extends Controller
     }
 
     public function all(){
-        return view("admintransaction");
+        $transactions = Transaction::get();
+
+        return view("admintransaction")->with("transactions", $transactions);
     }
 
     public function checkout(){
