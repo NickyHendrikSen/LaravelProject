@@ -15,9 +15,9 @@
 	<div class="shoes">
 	@foreach($shoes as $shoe)
 		<a class="shoe" href="{{ url('/shoe/' . $shoe->id) }}">
-			<img src="{{asset('storage/' . $shoe->image)}}" class="shoeimage">
+			<img src="{{ asset('storage/' . $shoe->image) }}" class="shoeimage">
 			<div class="shoename">{{$shoe->name}}</div>
-			<div class="price">Rp. {{$shoe->price}}</div>
+			<div class="price">{{$shoe->price_format}}</div>
 		</a>
 	@endforeach
 	</div>

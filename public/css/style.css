@@ -565,6 +565,28 @@ a{
 	float: left;
 	background: transparent;
 }
+.invalidshoe{
+	width: calc(50% - 52px);
+	float: left;
+	margin-right: 50px;
+	padding-top: 10px;
+	color:red;
+}
+.invalidimage{
+	padding-top: 10px;
+	width: 300px;
+	position: relative;
+	float: left;
+	margin-right: calc(100% - 300px);
+	color:red;
+}
+.invalidshoelong{
+	width: calc(100% - 52px);
+	float: left;
+	margin-right: 50px;
+	padding-top: 10px;
+	color:red;
+}
 .addshoeinputdouble{
 	margin-top: 20px;
 	width: calc(100% - 64px);

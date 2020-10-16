@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $shoes = DB::table("shoes")->paginate(6);
+        $shoes = Shoe::paginate(6);
         // dd($shoes);
         return view('home')->with("shoes", $shoes);
     }
