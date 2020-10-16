@@ -13,12 +13,15 @@
 		</div>
 	</div>
 	<div class="shoes">
-		<a class="shoe" href="{{ url('/shoe/1') }}">
-			<img src="images/eqt.jpg" class="shoeimage">
-			<div class="shoename">Adidas EQT</div>
-			<div class="price">Rp. 2,000,000</div>
+	@foreach($shoes as $shoe)
+		<a class="shoe" href="{{ url('/shoe/' . $shoe->id) }}">
+			<img src="{{asset('storage/' . $shoe->image)}}" class="shoeimage">
+			<div class="shoename">{{$shoe->name}}</div>
+			<div class="price">Rp. {{$shoe->price}}</div>
 		</a>
+	@endforeach
 	</div>
+	{{$shoes->links()}}
 </div>
 </body>
 @endsection

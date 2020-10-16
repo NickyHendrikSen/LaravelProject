@@ -6,16 +6,38 @@
 	@include("parts.leftnav")
 <div class="content">
 	<div class="viewallshoetitle">Add Shoe</div>
-	<form method="post" class="addshoecontainer" autocomplete="off">
+	<form method="POST" class="addshoecontainer" action="addShoe" enctype="multipart/form-data">
+		@csrf
 		<div class="addshoeimagecontainer">
 			<img src="#" class="addshoedisplay">
 			<label for="imagefile" class="addshoeimagelabel">Choose Image</label>
-			<input type="file" accept="image/*" class="addshoeimageinput" id="imagefile">
+			<input type="file" accept="image/*" name="image" class="addshoeimageinput" id="imagefile">
+			@error('image')
+				<span class="invalid-feedback" role="alert">
+					<strong>{{ $message }}</strong>
+				</span>
+			@enderror
 		</div>
+			<!-- <input type="file" name="image" class="" id="imagefile">asd -->
 		<div class="addshoedetail">
 			<input type="text" name="name" placeholder="Shoe Name" class="addshoeinput">
-			<input type="text" name="price" placeholder="Shoe Price" class="addshoeinput">
+			@error('name')
+				<span class="invalid-feedback" role="alert">
+					<strong>{{ $message }}</strong>
+				</span>
+			@enderror
+			<input type="number" name="price" placeholder="Shoe Price" class="addshoeinput">
+			@error('price')
+				<span class="invalid-feedback" role="alert">
+					<strong>{{ $message }}</strong>
+				</span>
+			@enderror
 			<input type="text" name="description" placeholder="Shoe Description" class="addshoeinputdouble">
+			@error('description')
+				<span class="invalid-feedback" role="alert">
+					<strong>{{ $message }}</strong>
+				</span>
+			@enderror
 			<input type="submit" value="ADD SHOE" class="addshoebutton button"> 
 		</div>
 	</form>

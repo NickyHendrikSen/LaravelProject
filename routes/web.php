@@ -27,7 +27,7 @@ Route::post('/loginUser', 'UserController@login');
 Route::post('/registerUser', 'UserController@register');
 Route::get('/logoutUser', 'UserController@logout');
 Route::get('/shoe/{id}', 'ShoeController@detail');
-Route::post('/insertShoe', 'ShoeController@insertShoe');
+Route::post('/addShoe', 'ShoeController@insertShoe');
 
 
 //Page
@@ -39,13 +39,13 @@ Route::group(['middleware' => ['guest']], function() {
 });
 
 Route::get('/home', 'HomeController@index');
+Route::get('/shoe/{id}', 'ShoeController@detail');
 
 //If not authenticated, then go back to login
 Route::group(['middleware' => ['authenticate']], function() {
     Route::get('/', 'HomeController@index');
     Route::get('/cart', 'CartController@show');
     Route::get('/history', 'TransactionController@history');
-    Route::get('/insertShoe', 'PageController@insertShoe');
     Route::get('/shoe/cart/{id}', 'ShoeController@cart');
     Route::get('/shoeDelete/{id}', 'ShoeController@delete');
     Route::get('/cart/update/{id}', 'CartController@update');
