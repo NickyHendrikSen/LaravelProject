@@ -19,20 +19,20 @@ class ShoeController extends Controller
         ]);
         // dd("test");
         
-        $uploadedFile = $request->image;
-        $filename = $uploadedFile->store('images');
-        $onlyname = $uploadedFile->hashName();
         if ($validatedData->fails())
         {
             return redirect()->back()->withErrors($validatedData->errors());
         }
+
+        $uploadedFile = $request->image;
+        $filename = $uploadedFile->store('images','public');
 
         // Image::make($file)->save();
         Shoe::create(array(
             "name" => $request["name"],
             "description" => $request["description"],
             "price" => $request["price"],
-            "image" => 'images/' . $onlyname,
+            "image" => $filename
         ));
 
         return redirect('home');
@@ -45,7 +45,13 @@ class ShoeController extends Controller
         return view('shoeDetail')->with("shoe", $shoe);
     }
     function cart($id){
-        return view("cart");
+        $shoe = Shoe::where("id","=",$id);
+
+        if($shoe->exists()){
+            $shoe = $shoe->first();
+            return view("cart")->with("shoe", $shoe);
+        }
+        return abort(404);
     }
 
     function delete(Request $request){

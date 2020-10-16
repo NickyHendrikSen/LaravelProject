@@ -12,29 +12,29 @@
 			<img src="#" class="addshoedisplay">
 			<label for="imagefile" class="addshoeimagelabel">Choose Image</label>
 			<input type="file" accept="image/*" name="image" class="addshoeimageinput" id="imagefile">
+		</div>
 			@error('image')
-				<span class="invalid-feedback" role="alert">
+				<span class="invalidimage" role="alert">
 					<strong>{{ $message }}</strong>
 				</span>
 			@enderror
-		</div>
 			<!-- <input type="file" name="image" class="" id="imagefile">asd -->
 		<div class="addshoedetail">
 			<input type="text" name="name" placeholder="Shoe Name" class="addshoeinput">
-			@error('name')
-				<span class="invalid-feedback" role="alert">
-					<strong>{{ $message }}</strong>
-				</span>
-			@enderror
 			<input type="number" name="price" placeholder="Shoe Price" class="addshoeinput">
-			@error('price')
-				<span class="invalid-feedback" role="alert">
-					<strong>{{ $message }}</strong>
-				</span>
-			@enderror
+				<div class="invalidshoe" role="alert">
+					@error('name')
+						<strong>{{ $message }}</strong>
+					@enderror
+				</div>
+				<div class="invalidshoe" role="alert">
+					@error('price')
+						<strong>{{ $message }}</strong>
+					@enderror
+				</div>
 			<input type="text" name="description" placeholder="Shoe Description" class="addshoeinputdouble">
 			@error('description')
-				<span class="invalid-feedback" role="alert">
+				<span class="invalidshoelong" role="alert">
 					<strong>{{ $message }}</strong>
 				</span>
 			@enderror

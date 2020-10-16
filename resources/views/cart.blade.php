@@ -9,10 +9,10 @@
 		<div class="flexbox">
 			<div class="addcartcontainer">
 				<div class="addtocarttitle">Add to Cart</div>
-				<img src="images/eqt.jpg" class="addtocartimage">
+				<img src="{{ $shoe->image_path }}" class="addtocartimage">
 				<div class="addtocartdetail">
-					<div class="addtocartshoename">Adidas Eqt Support</div>
-					<div class="addtocartprice">Rp. 2,000,000</div>
+					<div class="addtocartshoename">{{ $shoe->name }}</div>
+					<div class="addtocartprice">{{ $shoe->price_format }}</div>
 					<input type="number" value="1" placeholder="Qty" class="qtyinput"><br>
 					<input type="submit" value="Add to Cart" class="button">
 				</div>
