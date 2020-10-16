@@ -8,6 +8,7 @@
 	<div class="viewallshoetitle">Update Shoe</div>
 	<form method="POST" class="addshoecontainer" autocomplete="off">
 		@csrf
+		<input type="hidden" name="id" value="{{$shoe->id}}"/>
 		<div class="updateshoeimagecontainer">
 			<img src="{{asset('storage/' . $shoe->image)}}" class="updateshoedisplay">
 		</div>

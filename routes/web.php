@@ -48,6 +48,12 @@ Route::group(['middleware' => ['authenticate']], function() {
     Route::get('/shoe/cart/{id}', 'ShoeController@cart');
     Route::get('/shoeDelete/{id}', 'ShoeController@delete');
     Route::get('/cart/update/{id}', 'CartController@update');
+
+    //API
+    Route::get('/cart/delete/{id}', 'CartController@delete');
+    Route::post('/shoe/cart', 'CartController@addCart');
+    Route::post('/cart/update', 'CartController@updateCart');
+    Route::post('/checkout', 'TransactionController@checkout');
 });
 Route::group(['middleware' => ['authadmin']], function() {
     Route::get('/addshoe', 'ShoeController@add');
@@ -56,5 +62,5 @@ Route::group(['middleware' => ['authadmin']], function() {
 
     //API
     Route::post('/addShoe', 'ShoeController@insertShoe');
-    Route::post('/shoe/update/{id}', 'ShoeController@update');
+    Route::post('/shoe/update', 'ShoeController@update');
 });

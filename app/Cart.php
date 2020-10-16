@@ -3,15 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Shoe;
 
 class Cart extends Model
 {
     
-    protected $fillable = [id
-    user_id
-    shoe_id
-    quantity]
     protected $fillable = [
-        'name', 'description', 'price', 'image'
+        'user_id', 'shoe_id', 'quantity'
     ];
+
+    public function Shoe(){
+        return $this->belongsTo(Shoe::class, "shoe_id");
+    }
 }
