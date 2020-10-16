@@ -24,4 +24,11 @@
 	</div>
 </div>
 </body>
+<script>
+$(document).ready(function(){
+	setTimeout(function(){
+		$(".overlayfinished").fadeOut();
+	},1000);
+});
+</script>
 @endsection

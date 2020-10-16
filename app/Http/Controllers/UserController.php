@@ -42,7 +42,7 @@ class UserController extends Controller
             "role" => "User",
         ));
         // dd($a);
-        return redirect('home');
+        return redirect('login');
     }
 
     function logout(){

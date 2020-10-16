@@ -22,7 +22,7 @@
 				@enderror
 				<input type="submit" class="button editsubmit" value="Save">
 			</form>
-			<img src="{{ url('/images/trash.png') }}" class="deletebutton" href=""> <!--{{url('cart/delete/' . $cart->id)}} -->
+			<a  href="{{url('cart/delete/' . $cart->id)}}"><img src="{{ url('/images/trash.png') }}" class="deletebutton"></a>
 		</div>
 	</div>
 </div>

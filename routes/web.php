@@ -62,5 +62,5 @@ Route::group(['middleware' => ['authadmin']], function() {
 
     //API
     Route::post('/addShoe', 'ShoeController@insertShoe');
-    Route::post('/shoe/update', 'ShoeController@update');
+    Route::post('/shoe/update/submit', 'ShoeController@update');
 });

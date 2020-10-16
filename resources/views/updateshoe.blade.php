@@ -5,8 +5,14 @@
 @include("parts.nav")
 @include("parts.leftnav")
 <div class="content">
+@if(Session::has("success"))
+	<div class="overlayfinished">
+		<img src="{{ url('/images/save.png') }}" class="savedicon">
+		<div class="savedword">SAVED</div>
+	</div>
+@endif
 	<div class="viewallshoetitle">Update Shoe</div>
-	<form method="POST" class="addshoecontainer" autocomplete="off">
+	<form method="POST" action="{{ url('/shoe/update/submit') }}" class="addshoecontainer" autocomplete="off">
 		@csrf
 		<input type="hidden" name="id" value="{{$shoe->id}}"/>
 		<div class="updateshoeimagecontainer">
@@ -26,4 +32,11 @@
 	</form>
 </div>
 </body>
+<script>
+$(document).ready(function(){
+	setTimeout(function(){
+		$(".overlayfinished").fadeOut();
+	},1000);
+});
+</script>
 @endsection

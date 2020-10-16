@@ -31,7 +31,7 @@ class HomeController extends Controller
         else{
             $shoes = Shoe::paginate(6);
         }
-        // dd($shoes);
+        //dd($shoes);
         return view('home')->with("shoes", $shoes);
     }
 }

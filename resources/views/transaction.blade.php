@@ -8,7 +8,7 @@
 	<div class="viewallshoetitle">Transactions</div>
 	<div class="transactions">
 		@foreach($transactions as $transaction)
-		<div class="transaction">
+		<div class="transaction" id="{{ $transaction->id }}">
 			<div class="transactionheader">
 				<!-- <div class="transactiontime">13 June 2020 - 13:00</div> -->
 				<div class="transactiontime">{{$transaction->date}}</div>
@@ -23,4 +23,12 @@
 		@endforeach
 	</div>
 </div>
+<script>
+$(document).ready(function(){
+	@if(Session::has("id"))
+		$("#{{ Session::get('id') }}").hide();
+		$("#{{ Session::get('id') }}").slideDown();
+	@endif
+});
+</script>
 @endsection

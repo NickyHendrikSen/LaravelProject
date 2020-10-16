@@ -5,6 +5,12 @@
 	@include("parts.nav")
 	@include("parts.leftnav")
 <div class="content">
+@if(Session::has("success"))
+	<div class="overlayfinished">
+		<img src="{{ url('/images/save.png') }}" class="savedicon">
+		<div class="savedword">SAVED</div>
+	</div>
+@endif
 	<div class="viewallshoetitle">Add Shoe</div>
 	<form method="POST" class="addshoecontainer" action="addShoe" enctype="multipart/form-data">
 		@csrf
@@ -45,6 +51,9 @@
 </body>
 <script>
 	$(document).ready(function(){
+	setTimeout(function(){
+		$(".overlayfinished").fadeOut();
+	},1000);
 		function readURL(input) {
 		  if (input.files && input.files[0]) {
 		    var reader = new FileReader();
