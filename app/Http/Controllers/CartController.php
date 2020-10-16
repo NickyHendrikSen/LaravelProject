@@ -25,7 +25,7 @@ class CartController extends Controller
     }
 
     public function addCart(Request $request){
-        $user_id = Auth::check(); // Ga usah di check lagi, udah pake middleware
+        $user_id = Auth::user()->id; // Ga usah di check lagi, udah pake middleware
         $quantity = $request->quantity;
         $shoe_id = $request->id;
         
@@ -38,12 +38,20 @@ class CartController extends Controller
             return redirect()->back()->withErrors($validatedData->errors());
         }
 
-        Cart::create(array(
-            "user_id" => $user_id,
-            "quantity" => $quantity,
-            "shoe_id" => $shoe_id
-        ));
-        return redirect('shoe/' . $shoe_id);
+        $check = Cart::where("shoe_id","=",$shoe_id)->where("user_id","=",$user_id);
+        if($check->exists()){
+            $cart = $check->first();
+            $cart->quantity += $quantity;
+            $cart->save();
+        }
+        else{
+            Cart::create(array(
+                "user_id" => $user_id,
+                "quantity" => $quantity,
+                "shoe_id" => $shoe_id
+            ));
+        }
+        return redirect('home')->with("success","saved");
     }
 
     public function updateCart(Request $request){
@@ -59,12 +67,15 @@ class CartController extends Controller
         Cart::where('id', $request->id)->update(array(
             "quantity" => $request->quantity
         ));
-        return redirect('cart');
+        return redirect('cart')->with("success","saved");
     }
     
     public function delete(Request $request){
         $id = $request->id;
-        Cart::delete($id);
-        return redirect('cart');
+        $item = Cart::where('id','=',$id);
+        if($item->exists()){
+            $item->delete();
+        }
+        return redirect('cart')->with("success","saved");
     }
 }

@@ -35,7 +35,7 @@ class ShoeController extends Controller
             "image" => $filename
         ));
 
-        return redirect('home');
+        return redirect()->back()->with("success","saved");
     }
 
     function detail(Request $request){
@@ -70,7 +70,7 @@ class ShoeController extends Controller
             "price" => $price,
             "description" => $description
         ]);
-        return redirect('home');
+        return redirect()->back()->with("success","saved");
     }
 
     function add(){

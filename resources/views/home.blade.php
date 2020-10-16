@@ -5,11 +5,17 @@
 @include("parts.nav")
 @include("parts.leftnav")
 <div class="content">
+@if(Session::has("success"))
+	<div class="overlayfinished">
+		<img src="{{ url('/images/shopping-cart.png') }}" class="savedicon">
+		<div class="savedword">Added to Cart</div>
+	</div>
+@endif
 	<div class="viewallshoetitle">
 		All Shoes
 		<div class="pagination">
-			<a href="#" class="paginatebutton left"></a>
-			<a href="#" class="paginatebutton right"></a>
+			<a href="{{$shoes->previousPageUrl()}}" class="paginatebutton left"></a>
+			<a href="{{$shoes->nextPageUrl()}}" class="paginatebutton right"></a>
 		</div>
 	</div>
 	<div class="shoes">
@@ -21,7 +27,13 @@
 		</a>
 	@endforeach
 	</div>
-	{{$shoes->links()}}
 </div>
 </body>
+<script>
+$(document).ready(function(){
+	setTimeout(function(){
+		$(".overlayfinished").fadeOut();
+	},1000);
+});
+</script>
 @endsection

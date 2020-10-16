@@ -1,14 +1,12 @@
 
 <nav class="nav">
-	<div class="logo">
+	<a class="logo" href="{{ url('/home') }}">
 		<img src="{{ url('/images/logo.png') }}" class="logoimage">
-	</div>
+	</a>
 	<div class="searchbar">
-		<img src="{{ url('/images/search.png') }}" class="searchicon">
-		<form action="" method="GET">
-			@csrf
+		<form action="{{ url('/home') }}" method="GET">
+			<input type="submit"  value="" class="searchicon"/>
 			<input type="text" placeholder="search" class="searchinput" name="search">
-			<input type="submit"  value="Search"/>
 		</form>
 	</div>
     @guest

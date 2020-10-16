@@ -11,7 +11,7 @@ use Auth;
 class TransactionController extends Controller
 {
     public function history(){
-        $transactions = Transaction::where("user_id", Auth::user()->id)->get();
+        $transactions = Transaction::where("user_id", Auth::user()->id)->orderBy("id","DESC")->get();
 
         return view("transaction")->with("transactions", $transactions);
     }
@@ -27,6 +27,12 @@ class TransactionController extends Controller
 
         $date = now();
 
+        //check cart exists
+        $cart = Cart::where('user_id', $user_id);
+        if(!$cart->exists()){
+            return redirect()->back();
+        }
+
         //Insert header
         $transaction_id = Transaction::create(array(
             "user_id" => $user_id,
@@ -34,7 +40,7 @@ class TransactionController extends Controller
         ))->id;
         
         //Get cart
-        $carts = Cart::where('user_id', $user_id)->get();
+        $carts = $cart->get();
 
         foreach($carts as $cart){
             TransactionDetail::create(array(
@@ -47,6 +53,6 @@ class TransactionController extends Controller
         //finally delete all cart items with such user
         Cart::where('user_id', $user_id)->delete();
 
-        return redirect()->back();
+        return redirect('/history')->with("id",$transaction_id);
     }
 }
