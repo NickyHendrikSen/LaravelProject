@@ -23,9 +23,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $shoes = Shoe::paginate(6);
+        if($request->search){
+            $shoes = Shoe::where('name', 'LIKE', '%' . $request->search . '%')->paginate(6);
+        }
+        else{
+            $shoes = Shoe::paginate(6);
+        }
         // dd($shoes);
         return view('home')->with("shoes", $shoes);
     }

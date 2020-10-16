@@ -8,29 +8,20 @@
 <div class="content">
 	<div class="viewallshoetitle">Transactions</div>
 	<div class="transactions">
+		@foreach($transactions as $transaction)
 		<div class="transaction">
 			<div class="transactionheader">
-				<div class="transactiontime">13 June 2020 - 13:00</div>
-				<div class="transactionprice">Rp. 6,000,000</div>
+				<!-- <div class="transactiontime">13 June 2020 - 13:00</div> -->
+				<div class="transactiontime">{{$transaction->date}}</div>
+				<div class="transactionprice">{{$transaction->countPrice($transaction->Detail)}}</div>
 			</div>
 				<div class="transactionimages">
-					<img src="images/eqt.jpg" class="transactionimage">
-					<img src="images/eqt.jpg" class="transactionimage">
-					<img src="images/eqt.jpg" class="transactionimage">
-					<img src="images/eqt.jpg" class="transactionimage">
-					<img src="images/eqt.jpg" class="transactionimage">
-					<img src="images/eqt.jpg" class="transactionimage">
+					@foreach($transaction->Detail as $detail)
+					<img src="{{asset('storage/' . $detail->Shoe->image)}}" class="transactionimage">
+					@endforeach
 				</div>
 		</div>
-		<div class="transaction">
-			<div class="transactionheader">
-				<div class="transactiontime">13 June 2020 - 13:00</div>
-				<div class="transactionprice">Rp. 6,000,000</div>
-			</div>
-				<div class="transactionimages">
-					<img src="images/eqt.jpg" class="transactionimage">
-				</div>
-		</div>
+		@endforeach
 	</div>
 </div>
 </body>

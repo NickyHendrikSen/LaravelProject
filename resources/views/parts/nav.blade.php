@@ -5,7 +5,11 @@
 	</div>
 	<div class="searchbar">
 		<img src="{{ url('/images/search.png') }}" class="searchicon">
-		<input type="text" placeholder="search" class="searchinput">
+		<form action="" method="GET">
+			@csrf
+			<input type="text" placeholder="search" class="searchinput" name="search">
+			<input type="submit"  value="Search"/>
+		</form>
 	</div>
     @guest
 	

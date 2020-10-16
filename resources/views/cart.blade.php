@@ -11,20 +11,27 @@
 				<div class="addtocarttitle">Add to Cart</div>
 				<img src="{{ $shoe->image_path }}" class="addtocartimage">
 				<div class="addtocartdetail">
+				<form method="POST" action="{{url('shoe/cart')}}" autocomplete="false" >
+					@csrf
+					<input type="hidden" value="{{$shoe->id}}" name="id"/>
 					<div class="addtocartshoename">{{ $shoe->name }}</div>
 					<div class="addtocartprice">{{ $shoe->price_format }}</div>
-					<input type="number" value="1" placeholder="Qty" class="qtyinput"><br>
+					<input type="number" value="1" min="1" placeholder="Qty" class="qtyinput" name="quantity"><br>
+					@error('quantity')
+						{{$message}}
+					@enderror
 					<input type="submit" value="Add to Cart" class="button">
+				</form>
 				</div>
 			</div>
 		</div>
 	</div>
 	<img src="images/eqt.jpg" class="shoepicture">
 	<div class="shoedetail">
-		<div class="shoenamedetail">Adidas EQT Support</div>
-		<div class="description">This is a shoe. You will get a pair of shoe if you buy this. Sole is made of rubber with a power to jump over the everest</div>
+		<div class="shoenamedetail">{{ $shoe->name }}</div>
+		<div class="description">{{ $shoe->description }}</div>
 		<div class="bottomright">
-			<div class="shoepricedetail">Rp. 2,000,000</div>
+			<div class="shoepricedetail">{{ $shoe->price_format }}</div>
 			<!--<div class="addtocart">ADD TO CART</div>!-->
 			<!--<div class="addtocart">UPDATE ICON</div>!-->
 			<div class="addtocart disabled"><img class="noicon" src="images/no.png">ADD TO CART</div>

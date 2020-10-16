@@ -62,7 +62,15 @@ class ShoeController extends Controller
     }
 
     function update(Request $request){
-        return redirect()->back();
+        $name = $request->name;
+        $price = $request->price;
+        $description = $request->description;
+        Shoe::where('id',  $request->id)->update([
+            "name" => $name,
+            "price" => $price,
+            "description" => $description
+        ]);
+        return redirect('home');
     }
 
     function add(){
@@ -70,7 +78,8 @@ class ShoeController extends Controller
     }
 
     function updateform($id){
-        return view("updateshoe");
+        $shoe = Shoe::where('id', $id)->first();
+        return view("updateshoe")->with('shoe', $shoe);
     }
 
 }
