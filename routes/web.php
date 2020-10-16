@@ -27,7 +27,6 @@ Route::post('/loginUser', 'UserController@login');
 Route::post('/registerUser', 'UserController@register');
 Route::get('/logoutUser', 'UserController@logout');
 Route::get('/shoe/{id}', 'ShoeController@detail');
-Route::post('/addShoe', 'ShoeController@insertShoe');
 
 
 //Page
@@ -54,4 +53,8 @@ Route::group(['middleware' => ['authadmin']], function() {
     Route::get('/addshoe', 'ShoeController@add');
     Route::get('/alltransaction', 'TransactionController@all');
     Route::get('/shoe/update/{id}', 'ShoeController@updateform');
+
+    //API
+    Route::post('/addShoe', 'ShoeController@insertShoe');
+    Route::post('/shoe/update/{id}', 'ShoeController@update');
 });
