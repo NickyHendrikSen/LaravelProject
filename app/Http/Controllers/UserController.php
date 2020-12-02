@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Validator;
 use App\User;
+use Cookie;
 
 class UserController extends Controller
 {
@@ -14,7 +15,13 @@ class UserController extends Controller
         $credentials = $request->only('email', 'password');
         $remember = $request->remember == null ? false : true;
         if (Auth::attempt($credentials, $remember)) {
-            // Authentication passed...
+            $rememberTokenExpireMinutes = 120;
+
+            $rememberTokenName = Auth::getRecallerName();
+
+            Cookie::queue($rememberTokenName, Cookie::get($rememberTokenName), $rememberTokenExpireMinutes);
+
+            $request->session()->regenerate();
             return redirect('home');
         }
         else{
