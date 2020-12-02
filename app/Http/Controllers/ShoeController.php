@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Image;
 use App\Shoe;
 use Validator;
+use Storage;
 
 class ShoeController extends Controller
 {
@@ -62,13 +63,35 @@ class ShoeController extends Controller
     }
 
     function update(Request $request){
+
+        $request->validate([
+            'name' => ['required'],
+            'description' => ['required'],
+            'price' => ['required', 'numeric', 'min:100'],
+        ]);
+
+
+        $shoe = Shoe::where('id',  $request->id);
         $name = $request->name;
         $price = $request->price;
         $description = $request->description;
+        $filename = $shoe->first()->image;
+
+
+        if($request->hasFile('image')){
+            $request->validate([
+                'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg']
+            ]);
+            Storage::delete($filename);
+            $uploadedFile = $request->image;
+            $filename = $uploadedFile->store('images','public');
+
+        }
         Shoe::where('id',  $request->id)->update([
             "name" => $name,
             "price" => $price,
-            "description" => $description
+            "description" => $description,
+            "image" => $filename
         ]);
         return redirect()->back()->with("success","saved");
     }

@@ -26,15 +26,20 @@
 			</div>
 		</div>
 	</div>
-	<img src="images/eqt.jpg" class="shoepicture">
+	<img src="{{ $shoe->image_path }}" class="shoepicture">
 	<div class="shoedetail">
 		<div class="shoenamedetail">{{ $shoe->name }}</div>
 		<div class="description">{{ $shoe->description }}</div>
 		<div class="bottomright">
-			<div class="shoepricedetail">{{ $shoe->price_format }}</div>
-			<!--<div class="addtocart">ADD TO CART</div>!-->
-			<!--<div class="addtocart">UPDATE ICON</div>!-->
-			<div class="addtocart disabled"><img class="noicon" src="images/no.png">ADD TO CART</div>
+			<div class="shoepricedetail">{{ $shoe->price_format }}</div>@guest
+				<div class="addtocart disabled"><img class="noicon" src="{{ url('/images/no.png') }}">ADD TO CART</div>
+			@else
+				@if(Auth::user()->role=="User")
+					<a class="addtocart" href="{{ url('/shoe/cart/' . $shoe->id) }}">ADD TO CART</a>
+				@elseif(Auth::user()->role=="Admin")
+					<a class="addtocart" href="{{ url('/shoe/update/' . $shoe->id) }}">UPDATE</a>
+				@endif
+			@endguest
 		</div>
 	</div>
 </div>
