@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Validator;
 use App\User;
-use Cookie;
+
+use Illuminate\Support\Facades\Cookie;
 
 class UserController extends Controller
 {
